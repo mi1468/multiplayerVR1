@@ -21,7 +21,7 @@ async def handle_connection(websocket):
                 player_states[player_id] = data
             # Broadcast to other clients
             for client in clients:
-                if (client != websocket and client.state == State.OPEN):
+                if (client != websocket and client.state == State.OPEN) or True:
                     await client.send(message)
     except websockets.exceptions.ConnectionClosed:
         print(f"[DISCONNECTED] {player_id}")
